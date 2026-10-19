@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="medium3">MEDIUM3</h1>
+<h2 id="step1">Step1</h2>
+<h3 id="任务11">任务1.1</h3>
+<p>1.绝对路径：从/（根目录）开始的路径（/var/backups/turing/是一个绝对路径）</p>
+<p>相对路径：从当前目录开始，.表示当前目录,..表示上一级，每多一个../就继续向上一级</p>
+<p>2.绝对路径：cd /var/backups/turing/</p>
+<p>相对路径：cd ../../../var/backups/turing/\</p>
+<h3 id="任务12">任务1.2</h3>
+<p>1.argc表示读取的字符个数，argv[]表示把字符串存入数组</p>
+<p>2.（如果上述命令指cd /var/backups/turing/）</p>
+<p>argc=2，argv[0]=程序名文件名，argv[1]=cd，argv[2]=/var/backups/turing/</p>
+<h2 id="step2">Step2</h2>
+<h3 id="任务21">任务2.1</h3>
+<p>1.见过的：#include &lt;stdio.h&gt;标准输入输出函数</p>
+<p>#include &lt;string.h&gt;字符串处理</p>
+<p>#include &lt;stdlib.h&gt;内存分配时用到的工具函数</p>
+<p>没见过：#include &lt;dirent.h&gt;（查）目录项操作，提供目录遍历相关类型函数，ls类核心头文件</p>
+<p>#include &lt;sys/stat.h&gt;（查）文件状态与元数据，获取文件元数据结构体函数</p>
+<p>#include &lt;sys/types.h&gt; 系统数据类型定义各种类型别名</p>
+<p>#include &lt;time.h&gt;时间处理</p>
+<p>2.&lt;dirent.h&gt;：类型DIR struct diren</p>
+<p>函数opendir(),readdir(),closedir()。</p>
+<p>用于打开关闭目录，遍历目录想，是实现ls目录遍历程序的基础</p>
+<p>&lt;sys/stat.h&gt;：类型struct stat，mode_t</p>
+<p>函数:stat(),lstat(),fstat()</p>
+<p>获取文件元数据,inode 编号、文件类型、权限、大小、时间.提供文件类型判断宏。</p>
+<p>2.2
+void parse_permissions(mode_t mode, char *perms)</p>
+<p>{</p>
+<pre><code>// 权限字符对照表
+
+char rwx[] = {'r', 'w', 'x'};
+
+// 请补全代码写在 TO DO 与 END OF TO DO 之间：
+
+// TO DO
+
+mode=mode&amp;0777;//(即为111111111)
+
+for(int i=0;i&lt;9;i++)
+
+{
+
+    if(mode &amp; (0400 &gt;&gt; i))//判断权限
+
+    {
+
+        perms[i]= rwx[i % 3] ;
+
+    }
+
+    else
+
+    {
+
+        perms[i]='-';
+
+    }
+
+}
+
+// END OF TO DO
+
+perms[9] = '\0'; // 字符串结尾
+</code></pre>
+<p>}</p>
+<h2 id="step3">Step3</h2>
+<h3 id="任务31">任务3.1</h3>
+<p>1.存储：1.文件大小2.文件权限3.文件类型4.文件创建时间5.文件数据存储位置</p>
+<p>2.不包含1.文件名2.文件内容</p>
+<ol start="3">
+<li>.表示当前目录,..表示上一级目录</li>
+</ol>
+<p>特殊规律：在根目录 / 下，. 和 .. 都指向根目录自身，它们的 inode 编号相同，且等于根目录的 inode 编号。</p>
+<h3 id="任务32">任务3.2</h3>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;string.h&gt;</p>
+<p>#include &lt;unistd.h&gt;</p>
+<p>#include &lt;sys/stat.h&gt;</p>
+<p>#include &lt;dirent.h&gt;</p>
+<p>ino_t get_inode(const char *path)</p>
+<p>{
+struct stat statbuf;</p>
+<pre><code>if (stat(path, &amp;statbuf) == -1) 
+
+{
+
+    perror(&quot;stat failed&quot;);
+
+    exit(EXIT_FAILURE);
+
+}
+
+return statbuf.st_ino;
+</code></pre>
+<p>}</p>
+<p>void print_path(ino_t cur_ino)</p>
+<p>{</p>
+<pre><code>ino_t parent_ino = get_inode(&quot;..&quot;);//查上一级inode
+
+if (cur_ino == parent_ino) //判断是否到根目录
+
+{
+
+    return; 
+
+}
+
+if (chdir(&quot;..&quot;) == -1) //判断是否正常
+
+{
+
+    perror(&quot;chdir ..&quot;);
+
+    exit(EXIT_FAILURE);
+
+}
+
+DIR *dir = opendir(&quot;.&quot;);//打开并存储当前文件夹
+
+if (!dir) //判断是否打开
+
+{
+
+    perror(&quot;opendir&quot;);
+
+    exit(EXIT_FAILURE);
+
+}
+
+struct dirent *entry;//暂存
+
+char name[256];
+
+int found = 0;
+
+
+while ((entry = readdir(dir)) != NULL) 
+
+{
+
+    // 跳过 &quot;.&quot; 和 &quot;..&quot;，防死循环
+
+    if (strcmp(entry-&gt;d_name, &quot;.&quot;) == 0 || strcmp(entry-&gt;d_name, &quot;..&quot;) == 0) 
+
+    {
+
+        continue;
+
+    }
+
+
+    if (get_inode(entry-&gt;d_name) == cur_ino) 
+
+    {
+
+        strncpy(name, entry-&gt;d_name, sizeof(name) - 1); 
+
+        name[sizeof(name) - 1] = '\0';//
+
+        found = 1;
+
+        break;
+
+    }
+
+    if(found==0)
+
+    {
+
+        return;
+
+    }
+
+    closedir(dir);
+
+    print_path(parent_ino);
+
+    printf(&quot;/%s&quot;,name);//到根目录开始逐级打印
+
+}
+</code></pre>
+<p>}</p>
+<p>int main()</p>
+<p>{</p>
+<pre><code>ino_t cur_ino = get_inode(&quot;.&quot;);     // 获取当前目录的 inode
+
+ino_t parent_ino = get_inode(&quot;..&quot;); // 获取父目录的 inode
+
+
+if (cur_ino == parent_ino) 
+
+{
+
+    printf(&quot;/\n&quot;); // 如果一开始就在根目录，打印/
+
+} 
+
+else 
+
+{
+
+    print_path(cur_ino); // 开始往上倒推
+
+    printf(&quot;\n&quot;);
+
+}
+
+return 0;
+</code></pre>
+<p>}</p>
+<h2 id="step4">Step4</h2>
+<h3 id="任务41">任务4.1</h3>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;string.h&gt;</p>
+<p>#include &lt;dirent.h&gt;</p>
+<p>#include &lt;sys/stat.h&gt;</p>
+<p>#include &lt;unistd.h&gt;</p>
+<p>// 递归查找指定文件，若找到则打印其相对路径</p>
+<p>void find_file(const char *current_path, const char *target_name)</p>
+<p>{</p>
+<pre><code>DIR *dir;
+
+struct dirent *entry;
+
+struct stat statbuf;
+
+
+if (!(dir = opendir(current_path))) 
+
+{
+
+    return; // 无法打开目录则跳过
+
+}
+
+while ((entry = readdir(dir)) != NULL) 
+
+{
+
+    // 忽略当前目录 . 和父目录 .. 防止无限死循环
+
+    if (strcmp(entry-&gt;d_name, &quot;.&quot;) == 0 || strcmp(entry-&gt;d_name, &quot;..&quot;) == 0) 
+
+    {
+
+        continue;
+
+    }
+
+    char full_path[1024];//full_file为current_file+entry-&gt;d_name
+
+    snprintf(full_path, sizeof(full_path), &quot;%s/%s&quot;, current_path, entry-&gt;d_name);
+
+    if (stat(full_path, &amp;statbuf) == -1) continue;
+
+    // 请补全代码写在 TO DO 与 END OF TO DO 之间：
+
+    // 要求：
+
+    // 1. 检查当前 entry 的文件名是否与 target_name 匹配，若匹配则打印 full_path。
+
+    // 2. 如果当前 entry 是一个目录，则需要对其进行深度优先的递归查找。
+
+    // （提示：若(statbuf.st_mode &amp; S_IFMT) == S_IFDIR则statbuf为目录文件）
+
+    // TO DO
+
+    if(strcmp(entry-&gt;d_name,target_name)==0)
+
+    {
+
+        printf(&quot;%s\n&quot;,full_path);
+
+    }
+
+    if((statbuf.st_mode &amp; S_IFMT) == S_IFDIR)
+
+    {
+
+        find_file(full_path,target_name);
+
+    }
+
+    // END OF TO DO
+}
+
+closedir(dir);
+</code></pre>
+<p>}</p>
+
+</body>
+</html>
